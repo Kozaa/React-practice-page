@@ -8,18 +8,25 @@ const Sun = styled.div`
     height: ${({ scale }) => `${scale * 1400}px`};
     background-color: yellow;
     flex-shrink: 0;
+    position: relative;
 `
 const Orbit = styled.div`
-    padding: 50px;
-    border: white solid 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: ${({ scale, distance }) => `${(scale * 1400)/2 + distance + 65}px`}; 
+    border: white solid 1px;
     border-radius: 50%;
 `
 
 
-const Star = ({ scale }) => (
-    <Orbit>
-        <Sun scale={scale}/>
-    </Orbit>
+const Star = ({ state }) => (
+        <Sun scale={state.scale}>
+            {state.planetData.map(item => <Orbit key={item.name} scale={state.scale} distance={item.distance}/> )}
+            {console.log(state.planetData[0].distance)}
+        </Sun>
+
 )
 
 export default Star;
