@@ -19,8 +19,8 @@ const StyledPlanet = styled.div`
 
 const InfoBox = styled.div`
 
-    width: 130px;
-    height: 90px;
+    width: 200px;
+    height: 130px;
     margin-bottom: 50px;
 
     display: flex;
