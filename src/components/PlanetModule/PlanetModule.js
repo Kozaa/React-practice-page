@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Wrapper from '../Wrapper/Wrapper';
-import Title from '../Title/Title';
-import Description from '../Description/Description';
+import InfoBox from '../InfoBox/InfoBox';
 
 const StyledPlanet = styled.div`
     border-radius: 50%;
@@ -14,33 +13,15 @@ const StyledPlanet = styled.div`
     flex-shrink: 0;
     position: relative;
 
-
 `
 
-const InfoBox = styled.div`
-
-    width: 200px;
-    height: 130px;
-    margin-bottom: 50px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    background-color: #ddd;
-    border-radius: 20px;
-
-`
 
 
 const PlanetModule = ({ name, description, width, distance, color, scale }) => (
     <>
     <Wrapper distance={distance} scale={scale}>
 
-        <InfoBox scale={scale} width={width}>
-                <Title> {name} </Title>
-                <Description> {description} </Description>
-        </InfoBox>
+        <InfoBox description={description} title={name}/>
 
         <StyledPlanet 
             name={name}
