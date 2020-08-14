@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import InfoBox from '../InfoBox/InfoBox';
+import { SunDescription } from '../../data/data';
+
 
 const Sun = styled.div`
     border-radius: 50%;
@@ -23,7 +25,6 @@ const Orbit = styled.div`
     border-radius: 50%;
 `
 
-const description = ['1.391.000 km', 'Center of The Solar Sytem (0AU - distance from Sun to Earth approx. 150.000.000 km)'];
 
 
 let distanceHelperVar = null;
@@ -44,7 +45,7 @@ const Star = ({ state }) => (
                 return <Orbit key={item.name}  distance={distanceHelperVar}/> }
             )}
 
-            <InfoBox description={description} title='Sun' scale={state.scale} />
+            <InfoBox description={SunDescription} title='Sun' scale={state.scale} />
         
         </Sun>
 

@@ -23,9 +23,9 @@ const Description = ({ description }) => (
         {description.map((item, i) => {
 
             switch(i) {
-                case 0: return (<SpacedDiv>Diameter: <br/> {item}</SpacedDiv>)
-                case 1: return (<SpacedDiv>Position: <br/> {item}</SpacedDiv>)
-                default: return (<SpacedDiv>{item}</SpacedDiv>)
+                case 0: return (<SpacedDiv key={i}>Diameter: <br/> {item}</SpacedDiv>)
+                case 1: return (<SpacedDiv key={i}>Position: <br/> {item}</SpacedDiv>)
+                default: return (<SpacedDiv key={i}>{item}</SpacedDiv>)
             }
         })}
     </StyledDescription>

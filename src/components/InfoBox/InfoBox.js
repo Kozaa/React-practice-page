@@ -23,7 +23,7 @@ const StyledInfoBox = styled.div`
         position: absolute;
         bottom: 0;
         left: 50%;
-        transform: translateY(98%) translateX(-50%);  /* 98% because on some screens thin line between element and after is visible*/
+        transform: translateY(98%) translateX(-50%);  /* 98% because on some screens there is a thin line visible between the element and after*/
 
         content: '';
         width: 0; 
@@ -59,7 +59,7 @@ const SunStyledInfoBox = styled(StyledInfoBox)`
 const InfoBox = ({ description, title, scale }) => {
     
     
-    {if(title==='Sun') {
+    if(title==='Sun') {
         return (
             <SunStyledInfoBox scale={scale}>
                 <Title> {title} </Title>
@@ -73,11 +73,7 @@ const InfoBox = ({ description, title, scale }) => {
                     <Description description={description}/>
                 </StyledInfoBox>
             ) 
- 
         }
-        
-    }
-
 };
 
 
