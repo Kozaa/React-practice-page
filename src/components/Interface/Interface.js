@@ -25,7 +25,7 @@ const ButtonContainer = styled.div`
     justify-content: space-around;
 `
 
-const Interface = ({ scale, interfaceText, handleScaleChangePlus, handleScaleChangeMinus }) => (
+const Interface = ({ scale, interfaceText, handleScaleChangePlus, handleScaleChangeMinus, handleCurrentObjectChangeRight, handleCurrentObjectChangeLeft, currentObject }) => (
     <Wrapper appInterface>
         <StyledInterfaceText>{ interfaceText }</StyledInterfaceText>
 
@@ -37,9 +37,9 @@ const Interface = ({ scale, interfaceText, handleScaleChangePlus, handleScaleCha
             </ButtonContainer>
 
                 <ButtonContainer>
-                    <div>Planet:</div>
-                    <Button direction='left'></Button>
-                    <Button direction= 'right'></Button>
+                    <div>Object: {currentObject}</div>
+                    <Button direction='left' onClick={handleCurrentObjectChangeLeft}></Button>
+                    <Button direction= 'right' onClick={handleCurrentObjectChangeRight}></Button>
                 </ButtonContainer>       
         </ButtonWrapper>
     </Wrapper>

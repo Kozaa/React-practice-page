@@ -54,9 +54,10 @@ const GlobalStyle = createGlobalStyle`
 class App extends React.Component {
 
   state = {
-    scale: .6,
+    scale: 1,
+    currentObject: 0,
     planetData,
-    interfaceText
+    interfaceText,
   };
 
 
@@ -65,7 +66,7 @@ class App extends React.Component {
 
       if(prevstate.scale < 1) {
 
-        let newScale = prevstate.scale + .1;
+        let newScale = prevstate.scale + .1;      //this makes sure there is no decimal errors like 3.0000000000000009
         newScale = newScale.toFixed(1);
         newScale = Number(newScale);
 
@@ -91,6 +92,53 @@ class App extends React.Component {
 
     });
  };
+
+    handleCurrentObjectChangeLeft = () => {
+
+      this.setState(prevstate => { 
+        if(prevstate.currentObject > 0) {
+          return {currentObject: prevstate.currentObject - 1 }
+        }
+      })
+    };
+
+    handleCurrentObjectChangeRight = () => {
+
+      this.setState(prevstate => { 
+        if(prevstate.currentObject < 8) {
+          return {currentObject: prevstate.currentObject + 1 }
+        }
+      })
+    };
+
+
+    calculatePlanetDistance = () => {
+      const ViewWidth = window.innerWidth;
+      let distance = 200;     //static margin-left on body element
+      
+      if(this.state.currentObject) {
+        distance = distance + (this.state.scale * 1400);      //adding sun width
+
+        for(let i=0; i<this.state.currentObject; i++) {
+
+          distance = distance + (this.state.scale * this.state.planetData[i].distance) + 200;   //200 is static infoBox width
+        }
+        distance = distance - ViewWidth/2;       //centering the planet in the view port
+      }
+
+     return distance;
+    }
+
+
+    componentDidUpdate() {
+      const left = this.calculatePlanetDistance();
+
+      window.scrollTo({
+        top: 0,
+       left: left,
+        behavior: 'smooth'
+    });
+}
 
   render() {
     
@@ -118,6 +166,10 @@ class App extends React.Component {
           interfaceText={interfaceText}
           handleScaleChangeMinus={this.handleScaleChangeMinus}
           handleScaleChangePlus={this.handleScaleChangePlus}
+          handleCurrentObjectChangeLeft={this.handleCurrentObjectChangeLeft}
+          handleCurrentObjectChangeRight={this.handleCurrentObjectChangeRight}
+          currentObject={this.state.currentObject}
+
         />
       </>
     );

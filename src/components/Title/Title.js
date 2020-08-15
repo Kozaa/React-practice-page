@@ -6,7 +6,6 @@ const H2 = styled.div`
     font-size: 1.2em;
     color: black;
     font-weight: 800;
-    padding: 0 100px;
 `
 
 const H1 = styled(H2)`

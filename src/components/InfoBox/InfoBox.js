@@ -46,8 +46,8 @@ const SunStyledInfoBox = styled(StyledInfoBox)`
     position: absolute;
     top: 50%;
     
-    right: ${({ scale }) => scale >= 0.5 ? '50%' : '-100%'};
-    transform: translateY(-50%) ${({ scale }) => scale >= 0.5 ? 'translateX(50%)' : null};
+    right: ${({ scale }) => scale >= 0.5 ? '50%' : '0'};
+    transform: translateY(-50%) ${({ scale }) => scale >= 0.5 ? 'translateX(50%)' : 'translateX(110%)'};
 
     ::after {
         content: none;

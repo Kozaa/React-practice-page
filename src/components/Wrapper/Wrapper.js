@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
@@ -32,20 +32,24 @@ const InterfaceWrapper = styled.div`
 
 `
 
-const Wrapper = ({ children, distance, scale, appInterface }) => (
+
+
+const Wrapper = ({ children, distance, scale, appInterface }) => {
+
+
     
-    appInterface ? (
-        <InterfaceWrapper>
-            {children}
-        </InterfaceWrapper>
-    ) : (
-        <StyledWrapper distance={distance} scale={scale}>
-            {children}
-        </StyledWrapper>
+    return (
+    
+        appInterface ? (
+            <InterfaceWrapper>
+                {children}
+            </InterfaceWrapper>
+        ) : (
+            <StyledWrapper distance={distance} scale={scale}>
+                {children}
+            </StyledWrapper>
+        )
     )
-    
-
-);
-
+}
 
 export default Wrapper;
