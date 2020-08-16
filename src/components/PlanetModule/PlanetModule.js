@@ -12,7 +12,6 @@ const StyledPlanet = styled.div`
     color: white;
     flex-shrink: 0;
     position: relative;
-
 `
 
 

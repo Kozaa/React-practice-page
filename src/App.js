@@ -7,9 +7,12 @@ import Interface from './components/Interface/Interface';
 import Title from './components/Title/Title';
 import { planetData, interfaceText } from './data/data';
 
-const GlobalStyle = createGlobalStyle`
 
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap');
+const viewWidth = window.innerWidth;
+const viewHeight = window.innerHeight;
+
+
+const GlobalStyle = createGlobalStyle`
 
   *, *::before, *::after {
     box-sizing: border-box;
@@ -29,6 +32,17 @@ const GlobalStyle = createGlobalStyle`
     font-size: calc(1vw + 1vh + 2px);
 
     overflow-y: hidden;  
+
+    @media screen and (max-width: 768px){
+      font-size: calc(1vw + 1vh + 4px);
+      margin-left: 0;
+      margin-bottom: 50vh;
+      margin-top: 60px;
+      width: 100vw;
+      height: auto;
+      overflow-y: visible;
+      overflow-x: hidden;
+    }
   }
 
   #root {
@@ -42,7 +56,8 @@ const GlobalStyle = createGlobalStyle`
   @media screen and (max-width: 768px) {
     #root {
       flex-direction: column;
-      
+      justify-content: center;
+      align-items: auto;
     }
   }
 `
@@ -54,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
 class App extends React.Component {
 
   state = {
-    scale: 1,
+    scale: .5,
     currentObject: 0,
     planetData,
     interfaceText,
@@ -67,6 +82,7 @@ class App extends React.Component {
       if(prevstate.scale < 1) {
 
         let newScale = prevstate.scale + .1;      //this makes sure there is no decimal errors like 3.0000000000000009
+        
         newScale = newScale.toFixed(1);
         newScale = Number(newScale);
 
@@ -83,6 +99,7 @@ class App extends React.Component {
       if(prevstate.scale > .1) {
 
         let newScale = prevstate.scale - .1;
+
         newScale = newScale.toFixed(1);
         newScale = Number(newScale);
 
@@ -113,29 +130,40 @@ class App extends React.Component {
 
 
     calculatePlanetDistance = () => {
-      const ViewWidth = window.innerWidth;
-      let distance = 200;     //static margin-left on body element
+
+      let distance = 0;
+
+      viewWidth > 768 ? distance = 200 : distance = 0;     //static margin-left on body element
       
       if(this.state.currentObject) {
         distance = distance + (this.state.scale * 1400);      //adding sun width
 
         for(let i=0; i<this.state.currentObject; i++) {
 
-          distance = distance + (this.state.scale * this.state.planetData[i].distance) + 200;   //200 is static infoBox width
+          distance = distance + (this.state.scale * this.state.planetData[i].distance) + (viewWidth > 768 ? 200 : 170 + this.state.scale * planetData[i].width);   //200 is static infoBox width, 170 is static height on mobile
         }
-        distance = distance - ViewWidth/2;       //centering the planet in the view port
+        distance = distance - (viewWidth > 768 ? viewWidth/2 : viewHeight/2 - 50);       //centering the planet in the view port
       }
 
      return distance;
     }
 
-
-    componentDidUpdate() {
-      const left = this.calculatePlanetDistance();
+    componentDidMount() {
 
       window.scrollTo({
         top: 0,
-       left: left,
+        left: viewWidth > 768 ? 200 : 0,
+        behavior: 'smooth'
+      })
+    }
+
+
+    componentDidUpdate() {
+      const distance = this.calculatePlanetDistance();
+
+      window.scrollTo({
+        top: viewWidth > 768 ? 0 : distance,
+       left: viewWidth > 768 ? distance : 0,
         behavior: 'smooth'
     });
 }
@@ -147,7 +175,7 @@ class App extends React.Component {
         <GlobalStyle/>
         <Title main/>
 
-        <Star state={this.state}/>
+        <Star scale={this.state.scale}/>
     
         {
           this.state.planetData.map(item => (

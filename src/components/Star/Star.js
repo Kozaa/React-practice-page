@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import InfoBox from '../InfoBox/InfoBox';
-import { SunDescription } from '../../data/data';
+import { sunDescription, planetData } from '../../data/data';
 
 
 const Sun = styled.div`
@@ -29,23 +29,24 @@ const Orbit = styled.div`
 
 let distanceHelperVar = null;
 
-const Star = ({ state }) => (
+const Star = ({ scale }) => (
 
-        <Sun scale={state.scale}>
+        <Sun scale={scale}>
 
-            {state.planetData.map((item, i) => {
-                
+            {planetData.map((item, i, arr) => {
+                const windowWidth = window.innerWidth;
+
                 if(i===0) {
-                    distanceHelperVar = state.scale * 1400 / 2;
-                    distanceHelperVar = (distanceHelperVar + (state.scale * item.distance) + 100)
+                    distanceHelperVar = scale * 1400 / 2;
+                    distanceHelperVar = (distanceHelperVar + (scale * item.distance) + (windowWidth > 768 ? 100 : 170 + (scale * item.width / 2)))
                 } else {
-                    distanceHelperVar = (distanceHelperVar + (state.scale * item.distance) + 200)
+                    distanceHelperVar = (distanceHelperVar + (scale * item.distance) + (windowWidth > 768 ? 200 : 170 + (scale * item.width / 2) + (scale * arr[i-1].width / 2)))
                 }
                 
                 return <Orbit key={item.name}  distance={distanceHelperVar}/> }
             )}
 
-            <InfoBox description={SunDescription} title='Sun' scale={state.scale} />
+            <InfoBox description={sunDescription} title='Sun' scale={scale} />
         
         </Sun>
 

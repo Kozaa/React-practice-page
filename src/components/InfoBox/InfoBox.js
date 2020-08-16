@@ -36,7 +36,8 @@ const StyledInfoBox = styled.div`
     }
 
     @media screen and (max-width: 768px) {
-        width: 20vh;
+        width: auto;
+        height: 120px;
     }
 `
 
@@ -53,12 +54,18 @@ const SunStyledInfoBox = styled(StyledInfoBox)`
         content: none;
     }
     
+    @media screen and (max-width: 768px) {
+        width: 150px;
+        right: 50%;
+        top: ${({ scale }) => scale >= 0.5 ? '50%' : 'auto'};
+        bottom: 0;
+        transform: translateX(50%) ${({ scale }) => scale >= 0.5 ? 'translateY(50%)' : 'translateY(110%)'};
+    }
 `
 
 
 const InfoBox = ({ description, title, scale }) => {
-    
-    
+   
     if(title==='Sun') {
         return (
             <SunStyledInfoBox scale={scale}>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
@@ -6,12 +6,19 @@ const StyledWrapper = styled.div`
     flex-direction: column;
     margin-left: ${({ distance, scale }) => `${distance * scale}px`};
     align-items: center;
-    transform: translateY(-50px);
+    justify-content: center;
+    transform: translateY(-50px); 
+
+    @media screen and (max-width: 768px){
+        margin-left: 0;
+        margin-top: ${({ distance, scale }) => `${distance * scale}px`};
+        transform: translateY(0);
+    }
 `
 
 const InterfaceWrapper = styled.div`
     width: 100vw;
-    height: 20vh;
+    min-height: 20vh;
     padding: 10px 20px;
 
     position: fixed;
@@ -26,17 +33,14 @@ const InterfaceWrapper = styled.div`
     justify-content: space-between;
 
     @media screen and (max-width: 768px) {
-        height: auto;
-        min-height: 20vh;
-    }
+        flex-direction: column;
 
+    }
 `
 
 
 
 const Wrapper = ({ children, distance, scale, appInterface }) => {
-
-
     
     return (
     

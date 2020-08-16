@@ -53,7 +53,6 @@ const StyledButtonLeft = styled(StyledButtonUp)`
     }
 `
 
-
 const StyledButtonRight = styled(StyledButtonLeft)`
 
 
@@ -63,15 +62,6 @@ const StyledButtonRight = styled(StyledButtonLeft)`
     }
 `
 
-// const Scroll = () => {
-
-
-//     window.scrollTo({
-//         top: 0,
-//         left: 6128700,
-//         behavior: 'smooth'
-//     });
-// }
 
 const Button = ({ onClick, direction }) => {
     

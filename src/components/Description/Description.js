@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const StyledDescription = styled.div`
     font-size: .6em;
     font-weight: 400;
-    padding: 10px;
+    padding: 10px 5px;
 
     display: flex;
     flex-direction: column;

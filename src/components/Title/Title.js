@@ -14,6 +14,8 @@ const H1 = styled(H2)`
     padding: 0;
     width: 100vw;
 
+    mix-blend-mode: difference;
+
     z-index: 1;
     text-align: center;
 
