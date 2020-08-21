@@ -69,7 +69,7 @@ export const planetData = [
 
 
 export const interfaceText = [
-    'The purpose of this website is to show how enormous the distances in our solar system really are. When people think of the solar system, first thing they see is the diagram from their school science book, showing the planets side by side. In reality, planets are just grains of dust in the disturbingly huge canvas of the solar system. In the scale of 1 every pixel you see represents 1000 kilometers. Even at that scale, smallest planets are hardly visible, due to the enormouse size of the Sun. While exploring the website, keep an eye on the scroll bar, it will help you comprehend the scale. Buttons on the right will help you find planets, if you ever get lost in the dark.'
+    'The purpose of this website is to show how enormous the distances in our solar system really are. When people think of the solar system, first thing they see is the diagram from their school science book, showing the planets side by side. In reality, planets are just grains of dust in the disturbingly huge canvas of the solar system. At the scale of 1, every pixel you see is approximately 1000 kilometers. Even at that scale, smallest planets are hardly visible, due to the enormouse size of the Sun. While exploring the website, keep an eye on the scroll bar, it will help you comprehend the scale. Buttons on the right will help you find planets, if you ever get lost in the dark.'
 ];
 
 

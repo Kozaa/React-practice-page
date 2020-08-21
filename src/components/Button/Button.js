@@ -63,13 +63,13 @@ const StyledButtonRight = styled(StyledButtonLeft)`
 `
 
 
-const Button = ({ onClick, direction }) => {
+const Button = ({ handleScaleChange, handleCurrentObjectChange,  direction }) => {
     
      switch(direction) {
-         case 'up': return (<StyledButtonUp onClick={onClick}/>)
-         case 'down': return (<StyledButtonDown onClick={onClick}/>)
-         case 'left': return (<StyledButtonLeft onClick={onClick}/>)
-         case 'right': return (<StyledButtonRight onClick={onClick}/>) 
+         case 'up': return (<StyledButtonUp id='1' onClick={handleScaleChange}/>)
+         case 'down': return (<StyledButtonDown id='0' onClick={handleScaleChange}/>)
+         case 'left': return (<StyledButtonLeft id='1' onClick={handleCurrentObjectChange}/>)
+         case 'right': return (<StyledButtonRight id='0' onClick={handleCurrentObjectChange}/>) 
          default: return (<div>Sorry, something went wrong</div>)
      }
 };
